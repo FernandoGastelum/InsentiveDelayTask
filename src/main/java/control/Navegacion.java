@@ -7,6 +7,7 @@ package control;
 import PanelesPrincipales.MainScreen;
 import PanelesPrincipales.CuePanel;
 import PanelesPrincipales.DiscriminationTaskPanel;
+import PanelesPrincipales.IniciarPanel;
 import PanelesPrincipales.PanelResultados;
 import PanelesPrincipales.RatePanel;
 import PanelesPrincipales.RewardPanel;
@@ -23,6 +24,7 @@ public class Navegacion {
     private RewardPanel rewardPanel;
     private RatePanel ratePanel;
     private PanelResultados panelResultados;
+    private IniciarPanel iniciarPanel;
     public Navegacion(){
     }
     public static Navegacion getInstance() {
@@ -31,7 +33,10 @@ public class Navegacion {
         }
         return instancia;
     }
-    
+    public void mostrarIniciarPanel(){
+        this.iniciarPanel = IniciarPanel.getInstance();
+        mostrarPantalla(iniciarPanel);
+    }
     public void mostrarCuePanel(){
         this.cuePanel = CuePanel.getInstance();
         cuePanel.metodosFlujoPrograma();

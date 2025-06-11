@@ -16,6 +16,6 @@ public class InsentiveDelayTask {
         MainScreen main = MainScreen.getInstance();
         main.setVisible(true);
         Navegacion nevegacion = Navegacion.getInstance();
-        nevegacion.mostrarCuePanel();
+        nevegacion.mostrarIniciarPanel();
     }
 }
