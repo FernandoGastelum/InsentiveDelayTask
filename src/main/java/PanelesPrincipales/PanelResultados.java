@@ -4,23 +4,53 @@
  */
 package PanelesPrincipales;
 
+import control.EstadisticasExcel;
+import control.ImageLoader;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author gaspa
  */
-public class PanelResultados extends javax.swing.JPanel {
+public final class PanelResultados extends javax.swing.JPanel {
+
     public static PanelResultados instancia;
+
     /**
      * Creates new form PanelResultados
      */
     public PanelResultados() {
         initComponents();
+        guardarEstadisticas();
+        establecerDineroGanado();
     }
-    public static PanelResultados getInstance(){
-        if(instancia == null){
+
+    public static PanelResultados getInstance() {
+        if (instancia == null) {
             instancia = new PanelResultados();
         }
         return instancia;
+    }
+    
+    public void establecerDineroGanado(){
+        double dinero = ImageLoader.obtenerValorTotalUsado();
+        dineroGanadoLabel.setText(String.valueOf(dinero));
+    }
+
+    public void guardarEstadisticas() {
+        // Se guarda en la carpeta de documentos
+        String userHome = System.getProperty("user.home");
+        String documentosPath = userHome + File.separator + "Documents";
+
+        // archivo con fecha y hora
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+        String nombreArchivo = documentosPath + File.separator + "estadisticas_" + timestamp + ".xlsx";
+
+        EstadisticasExcel.getInstance().exportarAExcel(nombreArchivo);
+
+        System.out.println("Estadísticas guardadas en: " + nombreArchivo);
     }
 
     /**
@@ -32,34 +62,53 @@ public class PanelResultados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        dineroGanadoLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("RESULTADOS FINALES XD");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setText("RESULTADOS ");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Dinero ganado:");
+
+        dineroGanadoLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        dineroGanadoLabel.setText("---");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(1502, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(882, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dineroGanadoLabel))
+                    .addComponent(jLabel2))
+                .addGap(814, 814, 814))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 1032, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addGap(269, 269, 269)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(dineroGanadoLabel))
+                .addContainerGap(731, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel dineroGanadoLabel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

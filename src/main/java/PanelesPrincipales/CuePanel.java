@@ -7,14 +7,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 
 /**
  *
@@ -91,6 +88,7 @@ public final class CuePanel extends javax.swing.JPanel {
         if(!comprobarPruebas()){
             cargarIcono();
         }
+        
     }
 
     public void setearCirculoCentral() {
@@ -110,7 +108,7 @@ public final class CuePanel extends javax.swing.JPanel {
      * @return true si las pruebas terminaron, false en caso contrario.
      */
     public boolean comprobarPruebas(){
-        if (contadorMonetary >= 3&& contadorErotic >= 3 && contadorControl >= 3) {
+        if (contadorMonetary >= 6&& contadorErotic >= 6 && contadorControl >= 3) {
             //se acabaron las pruebas
             System.out.println("TODAS LAS PRUEBAS TERMINARON");
             return true;
@@ -253,7 +251,7 @@ public final class CuePanel extends javax.swing.JPanel {
             int numero = random.nextInt(max - min + 1) + min;
 
             Temporizador.temporizador(numero, () -> {
-                delayPantallaBlanca = numero / 1000;
+                delayPantallaBlanca = numero / 1000.0;
                 System.out.println("pasaron " + delayPantallaBlanca + " segundos, cambiando de panel...");
                 Navegacion.getInstance().mostrarDiscriminationTaskPanel();
             });
@@ -261,9 +259,6 @@ public final class CuePanel extends javax.swing.JPanel {
         });
     }
 
-    private void mostrarPanelFinal() {
-        Navegacion.getInstance().mostrarPanelResultados();
-    }
 
     public String getPrueba() {
         return this.prueba;

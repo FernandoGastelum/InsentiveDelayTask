@@ -9,10 +9,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>com.mycompany.insentivedelaytask.InsentiveDelayTask</exec.mainClass>
+        
     </properties>
     <build>
         <plugins>
-            <!-- Empaquetar con clase principal -->
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -27,4 +28,12 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.3</version> 
+        </dependency>
+    </dependencies>
+    
 </project>

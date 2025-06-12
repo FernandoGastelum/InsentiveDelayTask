@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control;
 
 import java.util.ArrayList;
@@ -9,16 +6,21 @@ import java.util.Collections;
 
 /**
  *
- * @author gaspa
+ * @author Ilian Fernando Gastelum Romo
  */
 public class ImageLoader {
 
     private static String ruta;
     private static final ArrayList<String> listaRutasMonetariasA = new ArrayList<>();
+    private static final ArrayList<Double> listaRutasMonetariasValorA = new ArrayList<>();
     private static final ArrayList<String> listaRutasMonetariasB = new ArrayList<>();
+    private static final ArrayList<Double> listaRutasMonetariasValorB = new ArrayList<>();
     private static final ArrayList<String> listaRutasEroticasA = new ArrayList<>();
     private static final ArrayList<String> listaRutasEroticasB = new ArrayList<>();
-
+    
+    private static final ArrayList<Double> valoresUsados = new ArrayList<>();
+    
+    //el formato del nombre no importa, yo lo hice asi porque pense que el programa funcionaba de otra forma
     static {
         // Recompensas MonetariasA
             listaRutasMonetariasA.add("/Money75A.jpg");
@@ -29,6 +31,15 @@ public class ImageLoader {
             listaRutasMonetariasB.add("/Money75B.jpg");
             listaRutasMonetariasB.add("/Money50B.jpg");
             listaRutasMonetariasB.add("/Money25B.jpg");
+        // Valor de Recompensas MonetariasA
+            listaRutasMonetariasValorA.add(5.0);
+            listaRutasMonetariasValorA.add(10.0);
+            listaRutasMonetariasValorA.add(20.0);
+       
+        // Valor de Recompensas MonetariasB
+            listaRutasMonetariasValorB.add(30.0);
+            listaRutasMonetariasValorB.add(35.0);
+            listaRutasMonetariasValorB.add(50.0);
         
         // Recompensas EroticasA
             listaRutasEroticasA.add("/Erotic75A.jpg");
@@ -48,55 +59,44 @@ public class ImageLoader {
 
     public static String getRuta(int tipoRecompensa, String nombrePrueba) {
         if (nombrePrueba.equals("Monetary")) {
-            if (tipoRecompensa == 0 || tipoRecompensa == 1 || tipoRecompensa == 2) {
-                asignarRecompensaMonetaryA();
+            if (tipoRecompensa >= 0 && tipoRecompensa <= 2) {
+                asignarRecompensaMonetaria(listaRutasMonetariasA, listaRutasMonetariasValorA);
+            } else if (tipoRecompensa >= 3 && tipoRecompensa <= 5) {
+                asignarRecompensaMonetaria(listaRutasMonetariasB, listaRutasMonetariasValorB);
             }
-            if (tipoRecompensa == 3 || tipoRecompensa == 4 || tipoRecompensa == 5) {
-                asignarRecompensaMonetaryB();
-            }
-        }
-        if (nombrePrueba.equals("Erotic")) {
-            if (tipoRecompensa == 0 || tipoRecompensa == 1 || tipoRecompensa == 2) {
-                asignarRecompensaEroticA();
-            }
-            if (tipoRecompensa == 3 || tipoRecompensa == 4 || tipoRecompensa == 5) {
-                asignarRecompensaEroticB();
+        } else if (nombrePrueba.equals("Erotic")) {
+            if (tipoRecompensa >= 0 && tipoRecompensa <= 2) {
+                asignarRecompensa(listaRutasEroticasA);
+            } else if (tipoRecompensa >= 3 && tipoRecompensa <= 5) {
+                asignarRecompensa(listaRutasEroticasB);
             }
         }
         return ruta;
+    }
 
-    }
-    private static void asignarRecompensaMonetaryA() {
-        if (!listaRutasMonetariasA.isEmpty()) {
-            ruta = listaRutasMonetariasA.remove(0);
-            System.out.println("Mostrando imagen: "+ruta);
+    private static void asignarRecompensa(ArrayList<String> listaRutas) {
+        if (!listaRutas.isEmpty()) {
+            ruta = listaRutas.remove(0);
+            System.out.println("Mostrando imagen: " + ruta);
         } else {
             ruta = null;
         }
     }
-    private static void asignarRecompensaMonetaryB() {
-        if (!listaRutasMonetariasB.isEmpty()) {
-            ruta = listaRutasMonetariasB.remove(0);
-            System.out.println("Mostrando imagen: "+ruta);
+
+    private static void asignarRecompensaMonetaria(ArrayList<String> listaRutas, ArrayList<Double> listaValores) {
+        if (!listaRutas.isEmpty() && !listaValores.isEmpty()) {
+            ruta = listaRutas.remove(0);
+            Double valor = listaValores.remove(0);
+            valoresUsados.add(valor);
+            System.out.println("Mostrando imagen: " + ruta + " con valor $" + valor);
         } else {
             ruta = null;
         }
     }
-    private static void asignarRecompensaEroticA() {
-        if (!listaRutasEroticasA.isEmpty()) {
-            ruta = listaRutasEroticasA.remove(0);
-            System.out.println("Mostrando imagen: "+ruta);
-        } else {
-            ruta = null;
-        }
+
+    public static double obtenerValorTotalUsado() {
+        return valoresUsados.stream().mapToDouble(Double::doubleValue).sum();
     }
-    private static void asignarRecompensaEroticB() {
-        if (!listaRutasEroticasB.isEmpty()) {
-            ruta = listaRutasEroticasB.remove(0);
-            System.out.println("Mostrando imagen: "+ruta);
-        } else {
-            ruta = null;
-        }
-    }
+    
 
 }

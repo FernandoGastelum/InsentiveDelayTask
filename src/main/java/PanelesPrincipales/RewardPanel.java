@@ -4,14 +4,11 @@
  */
 package PanelesPrincipales;
 
+import control.EstadisticasExcel;
 import control.ImageLoader;
 import control.Navegacion;
 import control.Temporizador;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Insets;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,7 +22,8 @@ public class RewardPanel extends javax.swing.JPanel {
     private JLabel imagenRecompensa;
     private ImageIcon icono;
     private CuePanel cuePanel;
-    
+    private boolean exito;
+
     public static RewardPanel instancia;
 
     /**
@@ -36,8 +34,9 @@ public class RewardPanel extends javax.swing.JPanel {
         this.setLayout(new GridBagLayout());
         setearFiguraCentral();
     }
-    public void metodosFlujoPrograma(){
-        
+
+    public void metodosFlujoPrograma() {
+
         cargarIcono();
     }
 
@@ -55,6 +54,7 @@ public class RewardPanel extends javax.swing.JPanel {
     }
 
     public void cargarIcono() {
+        exito = false;
         this.cargarRuta("/Static.gif");
         if (DiscriminationTaskPanel.getInstance().getExito()) {
             System.out.println("La prueba fue superada con exito");
@@ -66,55 +66,55 @@ public class RewardPanel extends javax.swing.JPanel {
                 switch (tipoRecompensa) {
                     case 0 -> {
                         System.out.println("La prueba es del 75%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.75)){
+                        if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 1 -> {
                         System.out.println("La prueba es del 50%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.5)){
+                        if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 2 -> {
                         System.out.println("La prueba es del 25%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.25)){
+                        if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 3 -> {
                         System.out.println("La prueba es del 75%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.75)){
+                        if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 4 -> {
                         System.out.println("La prueba es del 50%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.5)){
+                        if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 5 -> {
                         System.out.println("La prueba es del 25%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.25)){
+                        if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
@@ -124,98 +124,111 @@ public class RewardPanel extends javax.swing.JPanel {
                 switch (tipoRecompensa) {
                     case 0 -> {
                         System.out.println("La prueba es del 75%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.75)){
+                        if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 1 -> {
                         System.out.println("La prueba es del 50%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.5)){
+                        if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 2 -> {
                         System.out.println("La prueba es del 25%A, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.25)){
+                        if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 3 -> {
                         System.out.println("La prueba es del 75%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.75)){
+                        if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 4 -> {
                         System.out.println("La prueba es del 50%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.5)){
+                        if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                     case 5 -> {
                         System.out.println("La prueba es del 25%B, calculando probabilidad de recompensa...");
-                        if(calcularProbabilidad(0.25)){
+                        if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
                             this.siguientePantallaExito();
-                        }else{
+                        } else {
                             this.siguientePantallaFallido();
                         }
                     }
                 }
             }
-            if(cuePanel.getPrueba().equals("Control")){
+            if (cuePanel.getPrueba().equals("Control")) {
                 System.out.println("La prueba es de tipo control, se mostrara pantalla en blanco");
                 siguientePantallaFallido();
             }
-            
-        }else{
+
+        } else {
             System.out.println("La prueba no fue exitosa, se mostrara la pantalla en blanco");
             this.siguientePantallaFallido();
         }
+        System.out.println("Guardando datos...");
+        guardarDatos(exito);
 
     }
-    private boolean calcularProbabilidad(double porcentaje){
+
+    private boolean calcularProbabilidad(double porcentaje) {
         Random random = new Random();
         double probabilidad = random.nextDouble();
-        
-        if(probabilidad <= porcentaje){
+
+        if (probabilidad <= porcentaje) {
             System.out.println("Exito en probabilidad, se mostrara una imagen como recompensa");
-            return true;
-        }else{
+            return exito = true;
+        } else {
             System.out.println("Fallo en probabilidad, se mostrara una imagen de estatica");
-            return false;
+            return exito = false;
         }
     }
-    private void siguientePantallaExito(){
+
+    private void siguientePantallaExito() {
         Temporizador.temporizador(2500, () -> {
             Navegacion.getInstance().mostrarRatePanel();
         });
     }
-    private void siguientePantallaFallido(){
+
+    private void siguientePantallaFallido() {
         Navegacion.getInstance().LimpiarPantalla();
         Temporizador.temporizador(2500, () -> {
-            if(CuePanel.getInstance().comprobarPruebas()){
+            if (CuePanel.getInstance().comprobarPruebas()) {
                 Navegacion.getInstance().mostrarPanelResultados();
-            }else{
+            } else {
                 Navegacion.getInstance().mostrarCuePanel();
             }
         });
     }
+
+    private void guardarDatos(boolean exito) {
+        if (!exito) {
+            EstadisticasExcel.getInstance().cargarDatos();
+            EstadisticasExcel.getInstance().agregarCalificacion(-1);
+        } 
+    }
+
 
     private void cargarRuta(String ruta) {
         if (ruta != null) {
@@ -223,6 +236,9 @@ public class RewardPanel extends javax.swing.JPanel {
             imagenRecompensa.setIcon(icono);
         } else {
         }
+    }
+    public boolean getExitoProbabilidad(){
+        return exito;
     }
 
     /**

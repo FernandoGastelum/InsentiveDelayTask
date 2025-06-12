@@ -4,15 +4,13 @@ PanelesPrincipales\CuePanel.class
 control\Temporizador.class
 PanelesPrincipales\MainScreen.class
 control\ImageLoader.class
-control\RecompensaManager$TipoPrueba.class
 PanelesPrincipales\RatePanel.class
 PanelesPrincipales\RewardPanel.class
 PanelesPrincipales\PanelResultados.class
-control\RecompensaManager.class
 PanelesPrincipales\DiscriminationTaskPanel$1.class
 control\Navegacion.class
 PanelesPrincipales\DiscriminationTaskPanel$2.class
+control\EstadisticasExcel.class
 PanelesPrincipales\IniciarPanel$1.class
 PanelesPrincipales\IniciarPanel.class
-control\RecompensaManager$Recompensa.class
 PanelesPrincipales\DiscriminationTaskPanel.class

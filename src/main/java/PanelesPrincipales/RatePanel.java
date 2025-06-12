@@ -4,20 +4,13 @@
  */
 package PanelesPrincipales;
 
+import control.EstadisticasExcel;
 import control.Navegacion;
 import control.Temporizador;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -28,11 +21,13 @@ import javax.swing.SwingConstants;
  * @author Ilian Fernando Gastelum Romo
  */
 public class RatePanel extends javax.swing.JPanel {
+
     public static RatePanel instancia;
     private JRadioButton[] botones;
     private ButtonGroup grupoBotones;
     private JPanel botonesPanel;
     private int valorSeleccionado = -1;
+
     /**
      * Creates new form ratePanel
      */
@@ -40,15 +35,25 @@ public class RatePanel extends javax.swing.JPanel {
         initComponents();
         this.setLayout(new GridLayout(2, 1, 10, 1));
         setearTextoYBotonesCentral();
+
     }
-    public static RatePanel getInstance(){
+
+    public static RatePanel getInstance() {
         if (instancia == null) {
             instancia = new RatePanel();
         }
         return instancia;
     }
+
+    public int getCalificacion() {
+        return valorSeleccionado;
+    }
+
     public void setearTextoYBotonesCentral() {
-        if (botonesPanel != null) return;
+        valorSeleccionado = -1;
+        if (botonesPanel != null) {
+            return;
+        }
 
         JLabel preguntaLabel = new JLabel("¿Qué tanto disfrutaste la recompensa?", SwingConstants.CENTER);
         preguntaLabel.setFont(new java.awt.Font("Segoe UI", 0, 48));
@@ -56,13 +61,15 @@ public class RatePanel extends javax.swing.JPanel {
 
         grupoBotones = new ButtonGroup();
         botonesPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        botonesPanel.setBackground(new java.awt.Color(255, 255, 255));
         botones = new JRadioButton[9];
 
         for (int i = 0; i < 9; i++) {
             final int valor = i + 1;
             JRadioButton boton = new JRadioButton(String.valueOf(valor));
             boton.setFont(new java.awt.Font("Arial", Font.PLAIN, 18));
-            boton.addActionListener(e -> valorSeleccionado = valor); 
+            boton.addActionListener(e -> valorSeleccionado = valor);
+            boton.setBackground(new java.awt.Color(255, 255, 255));
             grupoBotones.add(boton);
             botonesPanel.add(boton);
             botones[i] = boton;
@@ -70,14 +77,25 @@ public class RatePanel extends javax.swing.JPanel {
 
         this.add(botonesPanel);
     }
+
     public void limpiarSeleccion() {
         if (grupoBotones != null) {
             grupoBotones.clearSelection();
         }
     }
-    public void siguientePantalla(){
+
+
+    public void siguientePantalla() {
+
         Temporizador.temporizador(2500, () -> {
-            Navegacion.getInstance().mostrarCuePanel();
+            EstadisticasExcel.getInstance().cargarDatos();
+            EstadisticasExcel.getInstance().agregarCalificacion(this.getCalificacion());
+            System.out.println("CALIFICACION RATEPANEL " + this.getCalificacion());
+            if (CuePanel.getInstance().comprobarPruebas()) {
+                Navegacion.getInstance().mostrarPanelResultados();
+            } else {
+                Navegacion.getInstance().mostrarCuePanel();
+            }
         });
     }
 
