@@ -12,14 +12,17 @@ import java.awt.GridBagLayout;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.OverlayLayout;
 
 /**
  *
- * @author gaspa
+ * @author Ilian Fernando Gastelum Romo
  */
 public class RewardPanel extends javax.swing.JPanel {
 
     private JLabel imagenRecompensa;
+    private JLabel dinerillo;
     private ImageIcon icono;
     private CuePanel cuePanel;
     private boolean exito;
@@ -31,7 +34,6 @@ public class RewardPanel extends javax.swing.JPanel {
      */
     public RewardPanel() {
         initComponents();
-        this.setLayout(new GridBagLayout());
         setearFiguraCentral();
     }
 
@@ -49,13 +51,32 @@ public class RewardPanel extends javax.swing.JPanel {
 
     public final void setearFiguraCentral() {
         System.out.println("Seteando imagen de recompensa...");
+
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        this.setLayout(new java.awt.BorderLayout());
+        this.add(layeredPane, java.awt.BorderLayout.CENTER);
+
         imagenRecompensa = new JLabel();
-        this.add(imagenRecompensa);
+        imagenRecompensa.setBounds(0, 0, 1920, 1080);
+        imagenRecompensa.setHorizontalAlignment(JLabel.CENTER);
+        imagenRecompensa.setVerticalAlignment(JLabel.CENTER);
+
+        dinerillo = new JLabel();
+        dinerillo.setFont(new java.awt.Font("Segoe UI", 0, 40));
+        dinerillo.setForeground(new java.awt.Color(255, 255, 0));
+        dinerillo.setBounds(860, 500, 200, 50); // Centrado aproximado
+        dinerillo.setHorizontalAlignment(JLabel.CENTER);
+        dinerillo.setVerticalAlignment(JLabel.CENTER);
+
+        layeredPane.add(imagenRecompensa, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(dinerillo, JLayeredPane.PALETTE_LAYER); // Encima
     }
 
     public void cargarIcono() {
         exito = false;
         this.cargarRuta("/Static.gif");
+        this.dinerillo.setText("");
         if (DiscriminationTaskPanel.getInstance().getExito()) {
             System.out.println("La prueba fue superada con exito");
             System.out.println("Cargando recompensa...");
@@ -68,6 +89,7 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 75%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -77,7 +99,9 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 50%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
+                            
                         } else {
                             this.siguientePantallaFallido();
                         }
@@ -86,6 +110,7 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 25%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -95,6 +120,7 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 75%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -104,6 +130,7 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 50%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -113,6 +140,7 @@ public class RewardPanel extends javax.swing.JPanel {
                         System.out.println("La prueba es del 25%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
                             this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -209,6 +237,10 @@ public class RewardPanel extends javax.swing.JPanel {
         Temporizador.temporizador(2500, () -> {
             Navegacion.getInstance().mostrarRatePanel();
         });
+    }
+    private void establecerDinerillo(){
+        System.out.println("Valor actual: "+ImageLoader.getValorActual());
+        this.dinerillo.setText("$"+ImageLoader.getValorActual());
     }
 
     private void siguientePantallaFallido() {

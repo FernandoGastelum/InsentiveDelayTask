@@ -38,11 +38,15 @@ public final class CuePanel extends javax.swing.JPanel {
     private static final ArrayList<Integer> recompensasMonetaryDisponibles = new ArrayList<>();
     private static final ArrayList<Integer> recompensasEroticDisponibles = new ArrayList<>();
     private static final ArrayList<Integer> recompensasControl = new ArrayList<>();
-    //Listas de las recompensas. El numero representa el porcentaje de obtener 
-    //una imagen y la letra representa el tipo de imagen (A = small, B = Big)
-    //por cada ciclo for se agrega un elemento de cada tipo. modificar la cantidad
-    //de ciclos para agregar mas elementos.
-    //Las listas se revuelven una vez se han llenado, osea que desde aqui se decide la aletoriedad de las listas
+    /**
+     * Con estas listas se controla la cantidad de veces que aparece cada probabilidad,
+     * por cada loop del ciclo for se garantiza que aparezca 1 vez una probabilidad.
+     * Cuando una probabilidad aparece, se elimina de la lista, previniendo que se 
+     * vuelva a mostrar.
+     * por ejemplo, 8 ciclos garantiza que se muestre 8 veces cada probabilidad de una lista.
+     * 
+     * Solo modificar el numero de ciclos del metodo for.
+     */
     static {
         // Recompensas Monetary
         for (int i = 0; i < 1; i++) {
@@ -105,6 +109,8 @@ public final class CuePanel extends javax.swing.JPanel {
 
     /**
      * 0 = Monetary 1 = Erotic 2 = Control
+     * Modificar el numero dependiendo de el numero de pruebas que se quieran realizar
+     * valores default: 9 de control - 24 monetary - 24 erotic
      * @return true si las pruebas terminaron, false en caso contrario.
      */
     public boolean comprobarPruebas(){
@@ -116,6 +122,9 @@ public final class CuePanel extends javax.swing.JPanel {
             return false;
         }
     }
+    /**
+     * Aqui tambien se deben de ajustar los valores por valores iguales al metodo anterior
+     */
     public void cargarIcono() {
         Random random = new Random();
         int numero = random.nextInt(3);
@@ -137,8 +146,6 @@ public final class CuePanel extends javax.swing.JPanel {
             System.out.println("Pruebas Ero y Mone maximas, asignando control");
             numero = 2;
         }
-
-        
             String ruta = null;
             switch (numero) {
                 case 0 -> {

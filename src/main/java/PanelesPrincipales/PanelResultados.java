@@ -77,6 +77,7 @@ public final class PanelResultados extends javax.swing.JPanel {
         jLabel3.setText("Dinero ganado:");
 
         dineroGanadoLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        dineroGanadoLabel.setForeground(new java.awt.Color(51, 51, 51));
         dineroGanadoLabel.setText("---");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
