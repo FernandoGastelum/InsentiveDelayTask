@@ -28,9 +28,9 @@ public class ImageLoader {
          * se necesita ampliar a futuro
          */
         // Recompensas MonetariasA
-            listaRutasMonetariasA.add("/MoneyRewardImg.jpg");
+            listaRutasMonetariasA.add("/MoneyRewardImg.jpeg");
         // Recompensas MonetariasB
-//            listaRutasMonetariasB.add("/MoneyRewardImg.jpg");
+//            listaRutasMonetariasB.add("/MoneyRewardImg.png");
             
         // Valor de Recompensas MonetariasA
             listaRutasMonetariasValorA.add(5.0);
@@ -52,15 +52,14 @@ public class ImageLoader {
          * no alcanzarian a mostrarse.
          */    
         // Recompensas EroticasA
-            listaRutasEroticasA.add("/Erotic75A.jpg");
-            listaRutasEroticasA.add("/Erotic50A.jpg");
-            listaRutasEroticasA.add("/Erotic25A.jpg");
+            listaRutasEroticasA.add("/EroticA1.jpg");
+            listaRutasEroticasA.add("/EroticA2.jpg");
+            listaRutasEroticasA.add("/EroticA3.jpg");
         
         // Recompensas EroticasB
-            listaRutasEroticasB.add("/Erotic75B.jpg");
-            listaRutasEroticasB.add("/Erotic50B.jpg");
-            listaRutasEroticasB.add("/Erotic25B.jpg");
-            listaRutasEroticasB.add("/eroticTest.jpeg");
+            listaRutasEroticasB.add("/EroticA4.jpeg");
+            listaRutasEroticasB.add("/EroticA5.jpg");
+            listaRutasEroticasB.add("/EroticA6.jpg");
         
         Collections.shuffle(listaRutasMonetariasA);
         Collections.shuffle(listaRutasEroticasA);
