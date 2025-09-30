@@ -188,6 +188,8 @@ public final class DiscriminationTaskPanel extends javax.swing.JPanel {
         return this.tiempoRespuesta;
     }
     public boolean getExito(){
+        //EXITO HARDSETTED A TRUE PARA REALIZAR PRUEBAS
+//        exito = true;
         return exito;
     }
 

@@ -49,7 +49,7 @@ public final class CuePanel extends javax.swing.JPanel {
      */
     static {
         // Recompensas Monetary
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             recompensasMonetaryDisponibles.add(0); // 75A
             recompensasMonetaryDisponibles.add(1); // 50A
             recompensasMonetaryDisponibles.add(2); // 25A
@@ -59,7 +59,7 @@ public final class CuePanel extends javax.swing.JPanel {
         }
         Collections.shuffle(recompensasMonetaryDisponibles);
         // Recompensas Erotic
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             recompensasEroticDisponibles.add(0); // 75A
             recompensasEroticDisponibles.add(1); // 50A
             recompensasEroticDisponibles.add(2); // 25A
@@ -70,7 +70,7 @@ public final class CuePanel extends javax.swing.JPanel {
         Collections.shuffle(recompensasEroticDisponibles);
 
         // Recompensas Control (3 como marcador arbitrario)
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 9; i++) {
             recompensasControl.add(3); // única recompensa de tipo Control
         }
     }
@@ -114,7 +114,7 @@ public final class CuePanel extends javax.swing.JPanel {
      * @return true si las pruebas terminaron, false en caso contrario.
      */
     public boolean comprobarPruebas(){
-        if (contadorMonetary >= 6&& contadorErotic >= 6 && contadorControl >= 3) {
+        if (contadorMonetary >= 24&& contadorErotic >= 24 && contadorControl >= 9) {
             //se acabaron las pruebas
             System.out.println("TODAS LAS PRUEBAS TERMINARON");
             return true;
@@ -130,19 +130,19 @@ public final class CuePanel extends javax.swing.JPanel {
         int numero = random.nextInt(3);
         //9 de control - 24 monetary - 24 erotic
         //modificar estos valores si se necesita debugear con menos ciclos.
-        if (contadorControl >= 3) {
+        if (contadorControl >= 9) {
             System.out.println("Pruebas de control maximas alcanzadas, generando nuevo numero...");
             numero = random.nextInt(2); // Solo Monetary y Erotic
         }
-        if (contadorErotic >= 6 && contadorMonetary <= 6) {
+        if (contadorErotic >= 24 && contadorMonetary <= 24) {
             System.out.println("Pruebas eroticas maximas alcanzadas, generando nuevo numero...");
             numero = 0;
         }
-        if (contadorMonetary >= 6 && contadorErotic <= 6) {
+        if (contadorMonetary >= 24 && contadorErotic <= 24) {
             System.out.println("Pruebas monetarias maximas alcanzadas, generando nuevo numero...");
             numero = 1;
         }
-        if (contadorErotic >= 6 && contadorMonetary >= 6) {
+        if (contadorErotic >= 24 && contadorMonetary >= 24) {
             System.out.println("Pruebas Ero y Mone maximas, asignando control");
             numero = 2;
         }

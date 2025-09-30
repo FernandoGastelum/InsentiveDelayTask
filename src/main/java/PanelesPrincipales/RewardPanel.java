@@ -8,12 +8,11 @@ import control.EstadisticasExcel;
 import control.ImageLoader;
 import control.Navegacion;
 import control.Temporizador;
-import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.OverlayLayout;
 
 /**
  *
@@ -75,7 +74,7 @@ public class RewardPanel extends javax.swing.JPanel {
 
     public void cargarIcono() {
         exito = false;
-        this.cargarRuta("/Static.gif");
+        this.cargarRutaControl("/Static.gif");
         this.dinerillo.setText("");
         if (DiscriminationTaskPanel.getInstance().getExito()) {
             System.out.println("La prueba fue superada con exito");
@@ -262,11 +261,40 @@ public class RewardPanel extends javax.swing.JPanel {
     }
 
 
-    private void cargarRuta(String ruta) {
+    private void cargarRutaControl(String ruta) {
         if (ruta != null) {
             icono = new ImageIcon(getClass().getResource(ruta));
             imagenRecompensa.setIcon(icono);
         } else {
+        }
+    }
+    private void cargarRuta(String ruta) {
+        if (ruta != null) {
+            try {
+                // Cargar la imagen original
+                Image original = new ImageIcon(getClass().getResource(ruta)).getImage();
+
+                // Alto disponible (el del JLabel o de la ventana)
+                int altoDisponible = imagenRecompensa.getHeight(); 
+                if (altoDisponible <= 0) {
+                    altoDisponible = this.getHeight(); // respaldo: usa el JFrame si el JLabel aún no está dibujado
+                }
+
+                // Mantener proporción de aspecto
+                double relacion = (double) original.getWidth(null) / original.getHeight(null);
+                int nuevoAlto = altoDisponible;
+                int nuevoAncho = (int) (nuevoAlto * relacion);
+
+                // Escalar
+                Image escalada = original.getScaledInstance(nuevoAncho, nuevoAlto, Image.SCALE_SMOOTH);
+
+                // Asignar al JLabel
+                icono = new ImageIcon(escalada);
+                imagenRecompensa.setIcon(icono);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     public boolean getExitoProbabilidad(){
