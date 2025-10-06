@@ -54,7 +54,7 @@ public final class DiscriminationTaskPanel extends javax.swing.JPanel {
         imagenFigura.setSize(new Dimension(1980, 1080));
         //Lineas de codigo para ajustar la imagen un poco mas hacia arriba.
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(0, -300, 200, 0);
+        gbc.insets = new Insets(0, 0, 0, 0);
         //Agrega el label al panel para que se muestre
         this.add(imagenFigura,gbc);
     }
