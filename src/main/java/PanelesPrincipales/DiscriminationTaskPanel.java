@@ -50,11 +50,11 @@ public final class DiscriminationTaskPanel extends javax.swing.JPanel {
     public void setearFiguraCentral(){
         System.out.println("Setear figura central");
         imagenFigura = new JLabel();
-        imagenFigura.setPreferredSize(new Dimension(300, 300));
-        imagenFigura.setSize(new Dimension(300, 300));
+        imagenFigura.setPreferredSize(new Dimension(1980, 1080));
+        imagenFigura.setSize(new Dimension(1980, 1080));
         //Lineas de codigo para ajustar la imagen un poco mas hacia arriba.
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(0, 0, 100, 0);
+        gbc.insets = new Insets(0, -300, 200, 0);
         //Agrega el label al panel para que se muestre
         this.add(imagenFigura,gbc);
     }
@@ -93,7 +93,7 @@ public final class DiscriminationTaskPanel extends javax.swing.JPanel {
         if (ruta != null) {
             icono = new ImageIcon(getClass().getResource(ruta)); 
             Image imagenEscalada = icono.getImage().getScaledInstance(
-                300, 300, Image.SCALE_SMOOTH);
+                1980, 1080, Image.SCALE_SMOOTH);
             imagenFigura.setIcon(new ImageIcon(imagenEscalada));
         } else {
         }
