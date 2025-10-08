@@ -127,7 +127,16 @@ public final class CuePanel extends javax.swing.JPanel {
      */
     public void cargarIcono() {
         Random random = new Random();
-        int numero = random.nextInt(3);
+        double probabilidad = random.nextDouble();
+        int numero;
+        if(probabilidad<=0.11){
+            numero = 2;
+        }else if (probabilidad>0.11&&probabilidad<=0.44) {
+            numero = 1;
+        }else{
+            numero = 0;
+        }
+        
         //9 de control - 24 monetary - 24 erotic
         //modificar estos valores si se necesita debugear con menos ciclos.
         if (contadorControl >= 9) {
