@@ -27,6 +27,8 @@ public class ImageLoader {
     private static final ArrayList<Integer> listaRutasMonetariasValorB = new ArrayList<>();
     private static final ArrayList<String> listaRutasEroticasA = new ArrayList<>();
     private static final ArrayList<String> listaRutasEroticasB = new ArrayList<>();
+    private static final ArrayList<String> listaRutasEroticasA2 = new ArrayList<>();
+    private static final ArrayList<String> listaRutasEroticasB2 = new ArrayList<>();
     
     private static final ArrayList<Integer> valoresUsados = new ArrayList<>();
     
@@ -91,24 +93,61 @@ public class ImageLoader {
             listaRutasEroticasB.add("/EroticB10.jpg");
             listaRutasEroticasB.add("/EroticB11.jpg");
             listaRutasEroticasB.add("/EroticB12.jpg");
+            //recompensas Eroticas A2
+            listaRutasEroticasA2.add("/A1.jpg");
+            listaRutasEroticasA2.add("/A2.jpg");
+            listaRutasEroticasA2.add("/A3.jpg");
+            listaRutasEroticasA2.add("/A4.jpg");
+            listaRutasEroticasA2.add("/A5.jpg");
+            listaRutasEroticasA2.add("/A6.jpg");
+            listaRutasEroticasA2.add("/A7.jpg");
+            listaRutasEroticasA2.add("/A8.jpg");
+            listaRutasEroticasA2.add("/A9.jpg");
+            listaRutasEroticasA2.add("/A10.jpg");
+            listaRutasEroticasA2.add("/A11.jpg");
+            listaRutasEroticasA2.add("/A12.jpg");
+            //recompensas Eroticas B2
+            listaRutasEroticasB2.add("/B1.jpg");
+            listaRutasEroticasB2.add("/B2.jpg");
+            listaRutasEroticasB2.add("/B3.jpg");
+            listaRutasEroticasB2.add("/B4.jpg");
+            listaRutasEroticasB2.add("/B5.jpg");
+            listaRutasEroticasB2.add("/B6.jpg");
+            listaRutasEroticasB2.add("/B7.jpg");
+            listaRutasEroticasB2.add("/B8.jpg");
+            listaRutasEroticasB2.add("/B9.jpg");
+            listaRutasEroticasB2.add("/B10.jpg");
+            listaRutasEroticasB2.add("/B11.jpg");
+            listaRutasEroticasB2.add("/B12.jpg");
             
         Collections.shuffle(listaRutasMonetariasA);
         Collections.shuffle(listaRutasEroticasA);
         Collections.shuffle(listaRutasEroticasB);
+        Collections.shuffle(listaRutasEroticasA2);
+        Collections.shuffle(listaRutasEroticasB2);
     }
     
-    public static String getRuta(int tipoRecompensa, String nombrePrueba) {
+    public static String getRuta(int tipoRecompensa, String nombrePrueba, int version) {
+        
         if (nombrePrueba.equals("Monetary")) {
             if (tipoRecompensa >= 0 && tipoRecompensa <= 2) {
                 asignarRecompensaMonetaria(listaRutasMonetariasA, listaRutasMonetariasValorA);
             } else if (tipoRecompensa >= 3 && tipoRecompensa <= 5) {
                 asignarRecompensaMonetaria(listaRutasMonetariasA, listaRutasMonetariasValorB);
             }
-        } else if (nombrePrueba.equals("Erotic")) {
+            //0 = IMAGENES DE MUJERES
+            //1 = IMAGENES DE HOMBRES
+        } else if (nombrePrueba.equals("Erotic")&&version == 0) {
             if (tipoRecompensa >= 0 && tipoRecompensa <= 2) {
                 asignarRecompensa(listaRutasEroticasA);
             } else if (tipoRecompensa >= 3 && tipoRecompensa <= 5) {
                 asignarRecompensa(listaRutasEroticasB);
+            }
+        } else if(nombrePrueba.equals("Erotic")&&version == 1){
+            if (tipoRecompensa >= 0 && tipoRecompensa <= 2) {
+                asignarRecompensa(listaRutasEroticasA2);
+            } else if (tipoRecompensa >= 3 && tipoRecompensa <= 5) {
+                asignarRecompensa(listaRutasEroticasB2);
             }
         }
         return ruta;

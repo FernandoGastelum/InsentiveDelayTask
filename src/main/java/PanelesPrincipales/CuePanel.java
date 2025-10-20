@@ -26,6 +26,7 @@ public final class CuePanel extends javax.swing.JPanel {
     private int contadorMonetary = 0;
     private int contadorErotic = 0;
     private String prueba;
+    private static final Random random = new Random();
     //0=75A
     //1=50A
     //2=25A
@@ -126,12 +127,11 @@ public final class CuePanel extends javax.swing.JPanel {
      * Aqui tambien se deben de ajustar los valores por valores iguales al metodo anterior
      */
     public void cargarIcono() {
-        Random random = new Random();
         double probabilidad = random.nextDouble();
         int numero;
         if(probabilidad<=0.11){
             numero = 2;
-        }else if (probabilidad>0.11&&probabilidad<=0.44) {
+        }else if (probabilidad <= 0.55) {
             numero = 1;
         }else{
             numero = 0;
@@ -186,22 +186,42 @@ public final class CuePanel extends javax.swing.JPanel {
                 case 1 -> {
                     //Caso erotico
                     asignarRecompensaErotic();
-                    switch (recompensa) {
-                        case 0 ->
-                            ruta = "/EROTIC75A.png";
-                        case 1 ->
-                            ruta = "/EROTIC50A.png";
-                        case 2 ->
-                            ruta = "/EROTIC25A.png";
-                        case 3 ->
-                            ruta = "/EROTIC75B.png";
-                        case 4 ->
-                            ruta = "/EROTIC50B.png";
-                        case 5 ->
-                            ruta = "/EROTIC25B.png";
-                        default ->
-                            System.out.println("No se puede cargar la imagen, no hay recompensas disponibles " + recompensa + " " + numero);
+                    if(Navegacion.getInstance().getVersion()==0){
+                        switch (recompensa) {
+                            case 0 ->
+                                ruta = "/EROTIC75A.png";
+                            case 1 ->
+                                ruta = "/EROTIC50A.png";
+                            case 2 ->
+                                ruta = "/EROTIC25A.png";
+                            case 3 ->
+                                ruta = "/EROTIC75B.png";
+                            case 4 ->
+                                ruta = "/EROTIC50B.png";
+                            case 5 ->
+                                ruta = "/EROTIC25B.png";
+                            default ->
+                                System.out.println("No se puede cargar la imagen, no hay recompensas disponibles " + recompensa + " " + numero);
+                        }
+                    }else if(Navegacion.getInstance().getVersion()==1){
+                        switch (recompensa) {
+                            case 0 ->
+                                ruta = "/EROTIC75A2.png";
+                            case 1 ->
+                                ruta = "/EROTIC50A2.png";
+                            case 2 ->
+                                ruta = "/EROTIC25A2.png";
+                            case 3 ->
+                                ruta = "/EROTIC75B2.png";
+                            case 4 ->
+                                ruta = "/EROTIC50B2.png";
+                            case 5 ->
+                                ruta = "/EROTIC25B2.png";
+                            default ->
+                                System.out.println("No se puede cargar la imagen, no hay recompensas disponibles " + recompensa + " " + numero);
+                        }
                     }
+                    
                     contadorErotic++;
                     prueba = "Erotic";
                     System.out.println("Prueba: " + prueba);

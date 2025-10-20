@@ -6,6 +6,7 @@ control\Temporizador$1.class
 PanelesPrincipales\CuePanel.class
 control\Temporizador.class
 PanelesPrincipales\MainScreen.class
+PanelesPrincipales\IniciarPanel$2.class
 PanelesPrincipales\RatePanel.class
 PanelesPrincipales\RewardPanel.class
 PanelesPrincipales\PanelResultados.class

@@ -35,16 +35,25 @@ public class IniciarPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         iniciarBTN = new javax.swing.JButton();
+        iniciarBTN2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         iniciarBTN.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        iniciarBTN.setText("Iniciar");
+        iniciarBTN.setText("Version 1");
         iniciarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciarBTNActionPerformed(evt);
+            }
+        });
+
+        iniciarBTN2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        iniciarBTN2.setText("Version 2");
+        iniciarBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarBTN2ActionPerformed(evt);
             }
         });
 
@@ -53,25 +62,36 @@ public class IniciarPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(927, Short.MAX_VALUE)
-                .addComponent(iniciarBTN)
+                .addContainerGap(856, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iniciarBTN2)
+                    .addComponent(iniciarBTN))
                 .addGap(836, 836, 836))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(443, 443, 443)
+                .addGap(387, 387, 387)
                 .addComponent(iniciarBTN)
-                .addContainerGap(566, Short.MAX_VALUE))
+                .addGap(182, 182, 182)
+                .addComponent(iniciarBTN2)
+                .addContainerGap(369, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTNActionPerformed
         Navegacion.getInstance().mostrarCuePanel();
+        Navegacion.getInstance().setVersion(0);
     }//GEN-LAST:event_iniciarBTNActionPerformed
+
+    private void iniciarBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTN2ActionPerformed
+        Navegacion.getInstance().mostrarCuePanel();
+        Navegacion.getInstance().setVersion(1);
+    }//GEN-LAST:event_iniciarBTN2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton iniciarBTN;
+    private javax.swing.JButton iniciarBTN2;
     // End of variables declaration//GEN-END:variables
 }

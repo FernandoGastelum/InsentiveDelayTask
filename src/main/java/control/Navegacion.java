@@ -25,6 +25,7 @@ public class Navegacion {
     private RatePanel ratePanel;
     private PanelResultados panelResultados;
     private IniciarPanel iniciarPanel;
+    private int version;
     public Navegacion(){
     }
     public static Navegacion getInstance() {
@@ -32,6 +33,12 @@ public class Navegacion {
             instancia = new Navegacion();
         }
         return instancia;
+    }
+    public void setVersion(int version){
+        this.version = version;
+    }
+    public int getVersion(){
+        return this.version;
     }
     public void mostrarIniciarPanel(){
         this.iniciarPanel = IniciarPanel.getInstance();

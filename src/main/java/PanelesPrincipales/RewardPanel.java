@@ -49,7 +49,6 @@ public class RewardPanel extends javax.swing.JPanel {
     }
 
     public final void setearFiguraCentral() {
-        System.out.println("Seteando imagen de recompensa...");
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -87,7 +86,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 0 -> {
                         System.out.println("La prueba es del 75%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
@@ -97,7 +96,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 1 -> {
                         System.out.println("La prueba es del 50%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                             
@@ -108,7 +107,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 2 -> {
                         System.out.println("La prueba es del 25%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
@@ -118,7 +117,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 3 -> {
                         System.out.println("La prueba es del 75%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
@@ -128,7 +127,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 4 -> {
                         System.out.println("La prueba es del 50%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
@@ -138,7 +137,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 5 -> {
                         System.out.println("La prueba es del 25%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             establecerDinerillo();
                             this.siguientePantallaExito();
                         } else {
@@ -152,7 +151,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 0 -> {
                         System.out.println("La prueba es del 75%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -161,7 +160,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 1 -> {
                         System.out.println("La prueba es del 50%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -170,7 +169,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 2 -> {
                         System.out.println("La prueba es del 25%A, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -179,7 +178,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 3 -> {
                         System.out.println("La prueba es del 75%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.75)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -188,7 +187,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 4 -> {
                         System.out.println("La prueba es del 50%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.5)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -197,7 +196,7 @@ public class RewardPanel extends javax.swing.JPanel {
                     case 5 -> {
                         System.out.println("La prueba es del 25%B, calculando probabilidad de recompensa...");
                         if (calcularProbabilidad(0.25)) {
-                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba()));
+                            this.cargarRuta(ImageLoader.getRuta(tipoRecompensa, cuePanel.getPrueba(),Navegacion.getInstance().getVersion()));
                             this.siguientePantallaExito();
                         } else {
                             this.siguientePantallaFallido();
@@ -214,7 +213,6 @@ public class RewardPanel extends javax.swing.JPanel {
             System.out.println("La prueba no fue exitosa, se mostrara la pantalla en blanco");
             this.siguientePantallaFallido();
         }
-        System.out.println("Guardando datos...");
         guardarDatos(exito);
 
     }
