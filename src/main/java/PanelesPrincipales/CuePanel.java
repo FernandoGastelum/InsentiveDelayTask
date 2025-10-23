@@ -144,13 +144,10 @@ public final class CuePanel extends javax.swing.JPanel {
         int numero;
         System.out.println("test?"+Navegacion.getInstance().isTest());
         System.out.println("contador?"+contadorControl);
-        if(Navegacion.getInstance().isTest()){
+        if(contadorControl<3){
             numero = 2;
-            if(contadorControl>=2){
-                Navegacion.getInstance().setTest(false);
-                
-            }
-        }else{
+        }else{ 
+            Navegacion.getInstance().setTest(false);
             this.textoEnsayoPractica.setVisible(false);
             double probabilidad = random.nextDouble();
             if(probabilidad<=0.11){
