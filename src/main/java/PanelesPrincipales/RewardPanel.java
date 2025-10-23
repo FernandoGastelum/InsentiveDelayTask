@@ -213,7 +213,9 @@ public class RewardPanel extends javax.swing.JPanel {
             System.out.println("La prueba no fue exitosa, se mostrara la pantalla en blanco");
             this.siguientePantallaFallido();
         }
-        guardarDatos(exito);
+        if(!Navegacion.getInstance().isTest()){
+            guardarDatos(exito);
+        }
 
     }
 

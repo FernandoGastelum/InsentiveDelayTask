@@ -21,6 +21,7 @@ public final class CuePanel extends javax.swing.JPanel {
 
     public static CuePanel instancia;
     private JLabel imagenCirculo;
+    private JLabel textoEnsayoPractica;
     private ImageIcon icono;
     private int contadorControl = 0;
     private int contadorMonetary = 0;
@@ -98,14 +99,27 @@ public final class CuePanel extends javax.swing.JPanel {
 
     public void setearCirculoCentral() {
         System.out.println("Setear circulo central");
-        imagenCirculo = new JLabel();
+        textoEnsayoPractica = new JLabel("Ensayo de práctica");
+        textoEnsayoPractica.setFont(new java.awt.Font("Segoe UI", 0, 48));
+
+        GridBagConstraints gbcTexto = new GridBagConstraints();
+        gbcTexto.gridx = 0;       // Columna 0 (centrado)
+        gbcTexto.gridy = 0;       // Fila 0 (arriba)
+        gbcTexto.anchor = GridBagConstraints.PAGE_START; // Anclar arriba
+        // Margen superior, ajustado a 50 píxeles para separarlo del borde superior
+        gbcTexto.insets = new Insets(50, 0, 1000, 0);
+        
+        imagenCirculo = new JLabel();    
         imagenCirculo.setPreferredSize(new Dimension(300, 300));
         imagenCirculo.setSize(new Dimension(300, 300));
         //Lineas de codigo para ajustar la imagen un poco mas hacia arriba.
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(0, 0, 100, 0);
+        GridBagConstraints gbcCirtulo = new GridBagConstraints();
+        gbcCirtulo.insets = new Insets(0, 0, 100, 0);
         //Agrega el label al panel para que se muestre
-        this.add(imagenCirculo, gbc);
+        this.add(imagenCirculo, gbcCirtulo);
+        
+        this.add(textoEnsayoPractica, gbcTexto);
+        
     }
 
     /**
@@ -115,7 +129,7 @@ public final class CuePanel extends javax.swing.JPanel {
      * @return true si las pruebas terminaron, false en caso contrario.
      */
     public boolean comprobarPruebas(){
-        if (contadorMonetary >= 24&& contadorErotic >= 24 && contadorControl >= 9) {
+        if (contadorMonetary >= 24&& contadorErotic >= 24 && contadorControl >= 12) {
             //se acabaron las pruebas
             System.out.println("TODAS LAS PRUEBAS TERMINARON");
             return true;
@@ -127,19 +141,30 @@ public final class CuePanel extends javax.swing.JPanel {
      * Aqui tambien se deben de ajustar los valores por valores iguales al metodo anterior
      */
     public void cargarIcono() {
-        double probabilidad = random.nextDouble();
         int numero;
-        if(probabilidad<=0.11){
+        System.out.println("test?"+Navegacion.getInstance().isTest());
+        System.out.println("contador?"+contadorControl);
+        if(Navegacion.getInstance().isTest()){
             numero = 2;
-        }else if (probabilidad <= 0.55) {
-            numero = 1;
+            if(contadorControl>=2){
+                Navegacion.getInstance().setTest(false);
+                
+            }
         }else{
-            numero = 0;
+            this.textoEnsayoPractica.setVisible(false);
+            double probabilidad = random.nextDouble();
+            if(probabilidad<=0.11){
+                numero = 2;
+            }else if (probabilidad <= 0.55) {
+                numero = 1;
+            }else{
+                numero = 0;
+            }
         }
         
         //9 de control - 24 monetary - 24 erotic
         //modificar estos valores si se necesita debugear con menos ciclos.
-        if (contadorControl >= 9) {
+        if (contadorControl >= 12) {
             System.out.println("Pruebas de control maximas alcanzadas, generando nuevo numero...");
             numero = random.nextInt(2); // Solo Monetary y Erotic
         }

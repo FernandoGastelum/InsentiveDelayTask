@@ -26,6 +26,7 @@ public class Navegacion {
     private PanelResultados panelResultados;
     private IniciarPanel iniciarPanel;
     private int version;
+    private boolean Test;
     public Navegacion(){
     }
     public static Navegacion getInstance() {
@@ -40,6 +41,15 @@ public class Navegacion {
     public int getVersion(){
         return this.version;
     }
+
+    public boolean isTest() {
+        return Test;
+    }
+
+    public void setTest(boolean Test) {
+        this.Test = Test;
+    }
+    
     public void mostrarIniciarPanel(){
         this.iniciarPanel = IniciarPanel.getInstance();
         mostrarPantalla(iniciarPanel);

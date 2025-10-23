@@ -80,13 +80,17 @@ public class IniciarPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iniciarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTNActionPerformed
-        Navegacion.getInstance().mostrarCuePanel();
+        Navegacion.getInstance().setTest(true);
         Navegacion.getInstance().setVersion(0);
+        Navegacion.getInstance().mostrarCuePanel();
+        
     }//GEN-LAST:event_iniciarBTNActionPerformed
 
     private void iniciarBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTN2ActionPerformed
-        Navegacion.getInstance().mostrarCuePanel();
         Navegacion.getInstance().setVersion(1);
+        Navegacion.getInstance().setTest(true);
+        Navegacion.getInstance().mostrarCuePanel();
+        
     }//GEN-LAST:event_iniciarBTN2ActionPerformed
 
 
