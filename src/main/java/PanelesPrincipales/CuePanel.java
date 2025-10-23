@@ -72,7 +72,7 @@ public final class CuePanel extends javax.swing.JPanel {
         Collections.shuffle(recompensasEroticDisponibles);
 
         // Recompensas Control (3 como marcador arbitrario)
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 12; i++) {
             recompensasControl.add(3); // única recompensa de tipo Control
         }
     }
@@ -142,8 +142,6 @@ public final class CuePanel extends javax.swing.JPanel {
      */
     public void cargarIcono() {
         int numero;
-        System.out.println("test?"+Navegacion.getInstance().isTest());
-        System.out.println("contador?"+contadorControl);
         if(contadorControl<3){
             numero = 2;
         }else{ 
