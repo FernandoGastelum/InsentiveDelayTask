@@ -36,13 +36,19 @@ public class IniciarPanel extends javax.swing.JPanel {
 
         iniciarBTN = new javax.swing.JButton();
         iniciarBTN2 = new javax.swing.JButton();
+        iniciarBTN3 = new javax.swing.JButton();
+        iniciarBTN4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
+        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         iniciarBTN.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        iniciarBTN.setText("Version 1");
+        iniciarBTN.setText("Versión 1");
         iniciarBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciarBTNActionPerformed(evt);
@@ -50,32 +56,79 @@ public class IniciarPanel extends javax.swing.JPanel {
         });
 
         iniciarBTN2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        iniciarBTN2.setText("Version 2");
+        iniciarBTN2.setText("Versión 2");
         iniciarBTN2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 iniciarBTN2ActionPerformed(evt);
             }
         });
 
+        iniciarBTN3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        iniciarBTN3.setText("Versión 3");
+        iniciarBTN3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarBTN3ActionPerformed(evt);
+            }
+        });
+
+        iniciarBTN4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        iniciarBTN4.setText("Versión 4");
+        iniciarBTN4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarBTN4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setText("Seleccione la versión indicada");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/squareclick.gif"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/triangleclick.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(856, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iniciarBTN2)
-                    .addComponent(iniciarBTN))
-                .addGap(836, 836, 836))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(jLabel3)
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(iniciarBTN4)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(iniciarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(iniciarBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(iniciarBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(213, 213, 213))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {iniciarBTN, iniciarBTN2, iniciarBTN3, iniciarBTN4});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(387, 387, 387)
-                .addComponent(iniciarBTN)
-                .addGap(182, 182, 182)
-                .addComponent(iniciarBTN2)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(294, 294, 294)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
+                        .addComponent(iniciarBTN)
+                        .addGap(82, 82, 82)
+                        .addComponent(iniciarBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(iniciarBTN3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(iniciarBTN4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(368, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -87,15 +140,32 @@ public class IniciarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_iniciarBTNActionPerformed
 
     private void iniciarBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTN2ActionPerformed
-        Navegacion.getInstance().setVersion(1);
         Navegacion.getInstance().setTest(true);
+        Navegacion.getInstance().setVersion(1);
         Navegacion.getInstance().mostrarCuePanel();
         
     }//GEN-LAST:event_iniciarBTN2ActionPerformed
+
+    private void iniciarBTN3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTN3ActionPerformed
+        Navegacion.getInstance().setTest(true);
+        Navegacion.getInstance().setVersion(2);
+        Navegacion.getInstance().mostrarCuePanel();
+    }//GEN-LAST:event_iniciarBTN3ActionPerformed
+
+    private void iniciarBTN4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBTN4ActionPerformed
+        Navegacion.getInstance().setTest(true);
+        Navegacion.getInstance().setVersion(3);
+        Navegacion.getInstance().mostrarCuePanel();
+    }//GEN-LAST:event_iniciarBTN4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton iniciarBTN;
     private javax.swing.JButton iniciarBTN2;
+    private javax.swing.JButton iniciarBTN3;
+    private javax.swing.JButton iniciarBTN4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

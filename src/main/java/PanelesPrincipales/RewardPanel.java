@@ -227,7 +227,8 @@ public class RewardPanel extends javax.swing.JPanel {
             System.out.println("Exito en probabilidad, se mostrara una imagen como recompensa");
             return exito = true;
         } else {
-            System.out.println("Fallo en probabilidad, se mostrara una imagen de estatica");
+            System.out.println("Fallo en probabilidad, se mostrara una imagen de estatica");     
+            //HARCODEAR A EXITO = TRUE PARA TESTEAR, DEBE DE SER EXITO = FALSE
             return exito = false;
         }
     }

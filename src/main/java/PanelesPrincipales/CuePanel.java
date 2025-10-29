@@ -206,7 +206,7 @@ public final class CuePanel extends javax.swing.JPanel {
                 case 1 -> {
                     //Caso erotico
                     asignarRecompensaErotic();
-                    if(Navegacion.getInstance().getVersion()==0){
+                    if(Navegacion.getInstance().getVersion()==0||Navegacion.getInstance().getVersion()==3){
                         switch (recompensa) {
                             case 0 ->
                                 ruta = "/EROTIC75A.png";
@@ -223,7 +223,7 @@ public final class CuePanel extends javax.swing.JPanel {
                             default ->
                                 System.out.println("No se puede cargar la imagen, no hay recompensas disponibles " + recompensa + " " + numero);
                         }
-                    }else if(Navegacion.getInstance().getVersion()==1){
+                    }else if(Navegacion.getInstance().getVersion()==1||Navegacion.getInstance().getVersion()==2){
                         switch (recompensa) {
                             case 0 ->
                                 ruta = "/EROTIC75A2.png";
